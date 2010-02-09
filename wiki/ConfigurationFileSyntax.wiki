@@ -69,7 +69,7 @@ Draw a grid line at each step of pixels from the origin line.
 Color of regular grid lines.
 
 
-== Default and Field Sections==
+= Default and Field Sections=
 
 SerialChart accepts packets in CSV format (other formats might be supported in the future). Each packet comes on a separate line and each field value is separated by comma. Here is an example of sample data that SerialChart would receive:
 {{{
