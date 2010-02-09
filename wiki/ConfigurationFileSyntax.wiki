@@ -37,8 +37,7 @@ grid_v_color = #EEE
 grid_v_origin_color = transparent
 }}}
 
-
-Below is explanation of the parameters in the `[_setup_]` section:
+Below are the parameters that can be used in the `[_setup_]` section:
 
 ===port=== 
 Specifies the communication port to which the software connects. For ex: COM1,COM2,..
@@ -97,18 +96,18 @@ color=blue
 color=red
 }}}
 
-You can specify parameters that would apply by default to all fields in the *`[_default_]`* section. These parameters will apply to all field sections unless it is overridden in the field section by a parameter with the same name. 
+You can specify parameters that would apply by default to all fields in the *`[_default_]`* section. These parameters will apply to all field sections unless they will be overridden in the field section by  parameters with the same name. 
 
-In the example above note that Field2 and Field3 will inherit min=-1 and max=1 from the `[_default_]` section. However Field1 will override this values with min=0 and max=255
+In the example above note that Field2 and Field3 will inherit min=-1 and max=1 from the `[_default_]` section. However Field1 will override these values with min=0 and max=255
 
-After you defined the default parameters, you should define one section for each field that will be received in a packet. Field sections should be in the order in which they are received in the packet.
+After you have defined the default parameters, you should define one section for each field that will be received in a packet. Field sections should be in the order in which they are received in the packet.
 
-The name of field sections can be chosen randomly but should be distinct from the reserved section names `_setup_`, `_default_`.
+The name of field sections can be chosen randomly but should be distinct from the reserved section names `_setup_`, `_default_`. For that matter avoid any names that start and end with `_`.
 
 Below is an explanation of the parameters accepted in the `[_default_]` and field sections:
 
 ===min,max==
-These are the field values that correspond to the top and bottom lines of the chart. In other words if you specify min = -1 , max = 1. A value of -1 will be plotted at the top border of the chart , and a value of 1 will be plotted at the bottom border of the chart. A value of 0 will be plotted at the middle of the chart. Field values are linearly mapped from `[min,max]` range to `[0,height]` range (height is  as specified in the setup section).
+These are the field values that correspond to the top and bottom lines of the chart. In other words if you specify min = -1 and max = 1. A value of -1 will be plotted at the top border of the chart , and a value of 1 will be plotted at the bottom border of the chart. A value of 0 (which is is the midpoint between -1 and 1) will be plotted at the middle of the chart. Field values are linearly mapped from `[min,max]` range to `[0,height]` range where _height_ is  the chart height in pixels, specified in the setup section.
 
 ==color==
 This is the color used to plot a field value. Use _transparent_ color value if you don't want a specific field to be plotted.
