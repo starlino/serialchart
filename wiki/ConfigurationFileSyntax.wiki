@@ -1,0 +1,55 @@
+#Describes Configuration file syntax for SerialChart application (.scc files)
+
+= Introduction =
+
+SerialChart configuration is done through a text file. The general format of the file is as follows:
+{{{
+[section1]
+param1 = value
+param2 = value
+...
+
+[section2]
+param1 = value
+param2 = value
+}}}
+= Details =
+
+Each configuration file starts with the `[_setup_]` section, here you can setup global parameters. For example:
+{{{
+[_setup_]
+port=COM3   
+baudrate=57600
+
+width=1000
+height=201
+background_color = white
+
+grid_h_origin = 100
+grid_h_step = 10
+grid_h_color = #EEE
+grid_h_origin_color = #CCC
+
+grid_v_origin = 0
+grid_v_step = 10
+grid_v_color = #EEE
+grid_v_origin_color = transparent
+}}}
+
+Below is explanation of the parameters in the `[_setup_]` section:
+
+===port=== 
+Specifies the communication port to which the software connects. For ex: COM1,COM2,..
+
+===baudrate=== 
+Baudrate in bps (bits per second). Only certain values are currently supported: 110,300,600,1200,2400,9600,19200,38400,57600,115200. 
+
+_Please note that currently no flow control parameters are supported, and parity will default to "none", stop bits defaults to 1, as these are most common values._
+
+==width,height==
+width and height of the chart area in pixels
+
+===background_color===
+Background color of the chart, color can be specified in hex format (for ex: #FFF, or #FFFFFF) or named color see: http://www.w3.org/TR/SVG/types.html#ColorKeywords
+
+
