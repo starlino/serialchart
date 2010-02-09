@@ -37,8 +37,6 @@ grid_v_color = #EEE
 grid_v_origin_color = transparent
 }}}
 
-==Note about color formats== 
-Please note that colors in .SCC files can be specified in hex format (for ex: #FFF, or #FFFFFF) or named color (white,blue,magenta,pink,gray) see: http://www.w3.org/TR/SVG/types.html#ColorKeywords . Please note the special value _transparent_ which means "no color". You can use it if you don't want some elements to be drawn at all.
 
 Below is explanation of the parameters in the `[_setup_]` section:
 
@@ -56,6 +54,9 @@ width and height of the chart area in pixels
 ===background_color===
 Background color of the chart.
 
+*Note about color formats*
+Please note that colors in .SCC files can be specified in hex format (for ex: #FFF, or #FFFFFF) or named color (white,blue,magenta,pink,gray) see: http://www.w3.org/TR/SVG/types.html#ColorKeywords . Please note the special value _transparent_ which means "no color". You can use it if you don't want some elements to be drawn at all.
+
 ===grid_h_origin, grid_v_origin===
 Both horizontal and vertical grids will have an origin axis line, usually of different color from the regular grid lines. These parameters specifies the shift of this line from top/left borders of chart in pixels. 
 
@@ -68,7 +69,8 @@ Draw a grid line at each step of pixels from the origin line.
 ===grid_h_color, grid_v_color===
 Color of regular grid lines.
 
-==Configuring Field Parameters==
+
+== Default and Field Sections==
 
 SerialChart accepts packets in CSV format (other formats might be supported in the future). Each packet comes on a separate line and each field value is separated by comma. Here is an example of sample data that SerialChart would receive:
 
@@ -94,9 +96,6 @@ color=blue
 color=red
 }}}
 
-
-== Field Parameters==
-
 You can specify parameters that would apply by default to all fields in the `[_default_]` sections. These parameters will apply to all field sections unless it is overridden in the field section by a parameter with the same name. After you defined the default parameters, you should define one section for each field that will be received in a packet. The name of sections can be chosen randomly but should be distinct from the reseverd section names `_setup_`, `_default_`.
 
 Below is an explanation of the field parameters:
@@ -106,6 +105,4 @@ These are the field values that correspond to the top and bottom lines of the ch
 
 ==color==
 This is the color used to plot a field value. Use _transparent_ color value if you don't want a specific field to be plotted.
-
-
 
