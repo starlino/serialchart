@@ -36,6 +36,9 @@ grid_v_color = #EEE
 grid_v_origin_color = transparent
 }}}
 
+==Note about color formats== 
+Please note that colors in SCC files can be specified in hex format (for ex: #FFF, or #FFFFFF) or named color see (white,blue,magenta,pink,gray): http://www.w3.org/TR/SVG/types.html#ColorKeywords . Please note the special value _transparent_ which means "no color". You can use it if you don't want some elements to be drawn at all.
+
 Below is explanation of the parameters in the `[_setup_]` section:
 
 ===port=== 
@@ -46,10 +49,20 @@ Baudrate in bps (bits per second). Only certain values are currently supported: 
 
 _Please note that currently no flow control parameters are supported, and parity will default to "none", stop bits defaults to 1, as these are most common values._
 
-==width,height==
+===width, height===
 width and height of the chart area in pixels
 
 ===background_color===
-Background color of the chart, color can be specified in hex format (for ex: #FFF, or #FFFFFF) or named color see: http://www.w3.org/TR/SVG/types.html#ColorKeywords
+Background color of the chart.
 
+===grid_h_origin, grid_v_origin===
+Both horizontal and veritcal grids will have an origin axis line, usually of different color from the other grid line. These parameters specifies the shift of this line from top/left borders of chart in pixels. 
 
+===grid_h_origin_color, grid_v_origin_color
+Color of the grid origin (axis) line.
+
+===grid_h_step, grid_v_step===
+Draw a grid line at each step of pixels from the origin line.
+
+===grid_h_color, grid_v_color===
+Color of regular
