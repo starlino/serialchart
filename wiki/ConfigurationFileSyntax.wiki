@@ -109,5 +109,10 @@ Below is an explanation of the parameters accepted in the `[_default_]` and fiel
 ===min,max==
 These are the field values that correspond to the top and bottom lines of the chart. In other words if you specify min = -1 and max = 1. A value of -1 will be plotted at the top border of the chart , and a value of 1 will be plotted at the bottom border of the chart. A value of 0 (which is is the midpoint between -1 and 1) will be plotted at the middle of the chart. Field values are linearly mapped from `[min,max]` range to `[0,height]` range where _height_ is  the chart height in pixels, specified in the setup section.
 
-==color==
+===color===
 This is the color used to plot a field value. Use _transparent_ color value if you don't want a specific field to be plotted.
+
+===dash===
+Creates an interrupted line. For example:
+dash = 3
+will render 3 samples then will not render the next 3 samples, then render 3 samples, then again pause for 3 samples and so on...
