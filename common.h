@@ -12,7 +12,7 @@
 #include <QPair>
 #include <QtGlobal>
 #include <QPainter>
-
+#include <QSettings>
 #include <math.h>
 
 

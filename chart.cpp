@@ -18,20 +18,21 @@ void Chart::init(Configuration* config){
 
 }
 
-void Chart::plotData(const QList<double>& data){
+void Chart::newPacket(DecoderBase* decoder){
+    QList<QVariant> packetValues = decoder->getPacketValues();
     QPainter p(&px);
     //clear one vertical line
     p.setPen(Qt::transparent);
     p.setCompositionMode(QPainter::CompositionMode_Clear);
     p.drawLine(cursor_pos,0,cursor_pos,height()-1); //clear vertical line
     p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    for(int i=0; i < MIN(data.length(),config->columns.length()); i++){
-        QString sectionName = config->columns[i];
+    for(int i=0; i < MIN(packetValues.length(),config->fields.length()); i++){
+        QString sectionName = config->fields[i];
 
-        double v = data[i];
+        double v = packetValues[i].toDouble();
         double min = config->get(sectionName,"min").toDouble();
         double max = config->get(sectionName,"max").toDouble();
-        v = MAP_TO_RANGE(v,min,max, this->height(),0);
+        v = MAP_TO_RANGE(v,min,max, this->height()-1,0);
 
         int dash = config->get(sectionName,"dash").toInt();
         if(dash>0 && 1 == (cursor_pos / dash) % 2){

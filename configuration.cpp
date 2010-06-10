@@ -11,8 +11,8 @@ const QString Configuration::get(const QString& sectionName,const QString& prope
     if(sections.contains(sectionName) && sections[sectionName].contains(propertyName)){
         return sections[sectionName][propertyName];
     }else{
-        if("" == defaultValue && sectionName!="_setup_" && sectionName!="_default_")
-            return get("_default_",propertyName);
+        if(sectionName!="_setup_" && sectionName!="_default_")
+            return get("_default_",propertyName,defaultValue);
         else
             return defaultValue;
     }
@@ -21,7 +21,7 @@ const QString Configuration::get(const QString& sectionName,const QString& prope
 
 void Configuration::parse(const QString& str){
     //load defaults
-    columns.clear();
+    fields.clear();
     sections.clear();
 
     sections["_setup_"]["port"] = "COM1";
@@ -45,13 +45,15 @@ void Configuration::parse(const QString& str){
         if(rx.exactMatch(line)){
             //qDebug((" section["+rx.capturedTexts()[1]+"]").toAscii());
             sectionName = rx.capturedTexts()[1];
-            if(!columns.contains(sectionName) && sectionName!="_setup_" && sectionName!="_default_") columns.append(sectionName);;
+            if(!fields.contains(sectionName) && sectionName!="_setup_" && sectionName!="_default_") fields.append(sectionName);;
             continue;
         }
-        rx.setPattern("^\\s*(\\w+)\\s*\\=\\s*(\\S+)\\s*");
+        rx.setPattern("^\\s*(\\w+)\\s*\\=(.*)$");
         if(rx.exactMatch(line)){
-            sections[sectionName][rx.capturedTexts()[1]] = rx.capturedTexts()[2];
-           // qDebug((" pair["+rx.capturedTexts()[1]+","+rx.capturedTexts()[2]+"]").toAscii());
+            QString value = rx.capturedTexts()[2];
+            value = value.trimmed();
+            sections[sectionName][rx.capturedTexts()[1]] = value;
+            //qDebug((" pair["+rx.capturedTexts()[1]+","+value+"]").toAscii());
             continue;
         }
     }
