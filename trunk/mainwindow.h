@@ -3,7 +3,11 @@
 
 #include <QMainWindow>
 #include "common.h"
-#include "process.h"
+#include "portbase.h"
+#include "decoderbase.h"
+#include "displaybase.h"
+
+
 
 namespace Ui {
     class MainWindow;
@@ -22,16 +26,25 @@ protected:
 private:
     Ui::MainWindow *ui;
 
+    QSettings settings;
     QString documentFilePath;
+    void updateDocumentFilePath(const QString& filePath);
 
     bool saveDocument(const QString& filePath);
     bool loadDocument(const QString& filePath);
     bool checkDocument();
     bool documentIsDirty;
     Configuration* config;
-    Process* process;
+
+    PortBase* port;
+    DecoderBase* decoder;
+    DisplayBase* display;
+
+    bool portValid;
+
 
 private slots:
+    void on_sendButton_clicked();
     void on_actionConfiguration_toggled(bool );
     void on_actionChart_toggled(bool );
     void on_actionToolbar_toggled(bool );
@@ -45,8 +58,9 @@ private slots:
     void on_actionExit_triggered();
     void on_actionNew_triggered();
 
-    void on_process_newDataLine(const QList<double>&);
-    void on_process_stopped();
+    void portStopped();
+
+
 };
 
 #endif // MAINWINDOW_H

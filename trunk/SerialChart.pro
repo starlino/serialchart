@@ -3,23 +3,37 @@
 # -------------------------------------------------
 TARGET = SerialChart
 TEMPLATE = app
+LIBS += -lsetupapi
 SOURCES += main.cpp \
     mainwindow.cpp \
     qextserialport/qextserialport.cpp \
     qextserialport/qextserialbase.cpp \
     qextserialport/win_qextserialport.cpp \
-    column.cpp \
-    process.cpp \
+    portbase.cpp \
     configuration.cpp \
-    chart.cpp
+    chart.cpp \
+    hiddevice.cpp \
+    portrs232.cpp \
+    porthid.cpp \
+    decoderbase.cpp \
+    decodercsv.cpp \
+    displaybase.cpp \
+    decoderhdlc.cpp
 HEADERS += mainwindow.h \
     qextserialport/win_qextserialport.h \
     qextserialport/qextserialport.h \
     qextserialport/qextserialbase.h \
     common.h \
-    column.h \
-    process.h \
+    portbase.h \
     configuration.h \
-    chart.h
+    chart.h \
+    hiddevice.h \
+    portrs232.h \
+    porthid.h \
+    decoderbase.h \
+    decodercsv.h \
+    displaybase.h \
+    decoderhdlc.h
 FORMS += mainwindow.ui
 RESOURCES += resources.qrc
+OTHER_FILES += notes.txt

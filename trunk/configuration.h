@@ -1,8 +1,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#include <QObject>
-#include "column.h"
+#include "common.h"
 #include "./qextserialport/qextserialport.h"
 
 class Configuration : public QObject
@@ -12,7 +11,7 @@ public:
     explicit Configuration(QObject *parent = 0);
     void parse(const QString& str);
     const QString get(const QString& sectionName,const QString& propertyName,const QString& defaultValue="");
-    QStringList columns;
+    QStringList fields;
 
 private:
     QHash<QString, QHash<QString,QString > > sections;

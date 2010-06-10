@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "common.h"
 #include "configuration.h"
+#include "decoderbase.h"
 
 class Chart : public QWidget
 {
@@ -19,7 +20,7 @@ private:
 signals:
 
 public slots:
-    void plotData(const QList<double>&);
+    void newPacket(DecoderBase* decoder);
 
 protected:
     void paintEvent(QPaintEvent* ev);
