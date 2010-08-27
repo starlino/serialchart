@@ -158,7 +158,7 @@ void MainWindow::on_actionRun_triggered()
     ui->sendButton->setEnabled(true);
     ui->dataText->clear();
 
-    port = createPort(this,config);
+    port = createPort(config);
     decoder = createDecoder(this,config);
     display = createDisplay(this,config);
 
@@ -167,6 +167,7 @@ void MainWindow::on_actionRun_triggered()
     connect(port,SIGNAL(newData(const QByteArray&)),decoder,SLOT(newData(const QByteArray&)));
     connect(port,SIGNAL(packetSeparator()),decoder,SLOT(packetSeparator()));
     connect(port,SIGNAL(stopped()),this,SLOT(portStopped()));
+    connect(port,SIGNAL(message(const QString&,const QString&)),this,SLOT(message(const QString&,const QString&)));
     //decoder signals
     connect(decoder,SIGNAL(newPacket(DecoderBase*)),ui->chart,SLOT(newPacket(DecoderBase*)));
     connect(decoder,SIGNAL(newPacket(DecoderBase*)),display,SLOT(newPacket(DecoderBase*)));
@@ -211,4 +212,10 @@ void MainWindow::on_actionConfiguration_toggled(bool b)
 void MainWindow::on_sendButton_clicked()
 {
     if(portValid) port->send(ui->sendText->text());
+}
+
+void MainWindow::message(const QString& text,const QString& type)
+{
+    if("critical"==type) QMessageBox::critical(0,"",text);
+    else QMessageBox::information(0,"",text);
 }
