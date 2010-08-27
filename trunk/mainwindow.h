@@ -59,6 +59,7 @@ private slots:
     void on_actionNew_triggered();
 
     void portStopped();
+    void message(const QString& text,const QString& type);
 
 
 };

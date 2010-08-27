@@ -8,8 +8,9 @@ class PortHid : public PortBase
 {
 Q_OBJECT
 public:
-    explicit PortHid(QObject *parent = 0,Configuration* config = 0);
+    explicit PortHid(Configuration* config = 0);
     ~PortHid();
+    virtual void run();
     virtual void send(const QString & str);
 
 
@@ -27,12 +28,13 @@ private:
 signals:
     void newData(const QByteArray&);
     void stopped();
+    void message(const QString& text,const QString& type);
 
     void newDataLine(const QList<double>&);
 
 
 public slots:
-    void start();
+    //void start();
     void requestToStop();
 };
 

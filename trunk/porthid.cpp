@@ -1,8 +1,7 @@
 #include "porthid.h"
 
-
-PortHid::PortHid(QObject *parent,Configuration* config) :
-    PortBase(parent,config)
+PortHid::PortHid(Configuration* config)
+    : PortBase(config)
 {
     isRunning = false;
     hidDevice = 0;
@@ -10,7 +9,7 @@ PortHid::PortHid(QObject *parent,Configuration* config) :
 
 
 
-void PortHid::start(){
+void PortHid::run(){
     if(isRunning) return;
     hidDevice = new HidDevice();
     if(hidDevice->connect("vid_"+config->get("_setup_","vid")+"&"+"pid_"+config->get("_setup_","pid"))){

@@ -1,6 +1,7 @@
 #include "portrs232.h"
 
-PortRs232::PortRs232(QObject *parent,Configuration* config): PortBase(parent,config)
+PortRs232::PortRs232(Configuration* config)
+    : PortBase(config)
 {
     isRunning = false;
     serialPort = 0;
@@ -37,7 +38,7 @@ void PortRs232::portSetup(){
 }
 
 
-void PortRs232::start(){
+void PortRs232::run(){
     if(isRunning) return;
     serialPort = new QextSerialPort(config->get("_setup_","port"),QextSerialPort::EventDriven);
     portSetup();
@@ -51,15 +52,15 @@ void PortRs232::start(){
             qApp->processEvents();
         }
     }else{
-        QMessageBox::critical(0,"","Could not open port "+config->get("_setup_","port")+"\nMake sure the port is available and not used by other applications.");
+        emit message("Could not open port "+config->get("_setup_","port")+"\nMake sure the port is available and not used by other applications.","critical");
     }
 
     isRunning = false;
     if(serialPort->isOpen()) serialPort->close();
     delete serialPort;
     emit stopped();
-
 }
+
 
 
 void PortRs232::send(const QString & str){

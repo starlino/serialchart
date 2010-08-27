@@ -2,18 +2,18 @@
 #include "portrs232.h"
 #include "porthid.h"
 
-PortBase::PortBase(QObject *parent,Configuration* config) :
-    QObject(parent)
+PortBase::PortBase(Configuration* config) :
+    QThread()
 {
     this->config = config;
 }
 
 
-PortBase* createPort(QObject *parent, Configuration* config){
+PortBase* createPort(Configuration* config){
     if(0 == config->get("_setup_","port").compare("hid",Qt::CaseInsensitive))
-        return new PortHid(parent,config);
+        return new PortHid(config);
     //default
-        return new PortRs232(parent,config);
+        return new PortRs232(config);
 };
 
 
