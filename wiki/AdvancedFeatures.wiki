@@ -72,7 +72,7 @@ type = byte / sbyte / word / sword / float
 
 format = %g / %f / %d / %n / %s / %x
 
-Here is how this formatting is used:
+Here is how this formatting is applied (providing source code excerpt until further documentation is written):
 
 {{{
 v.replace(QByteArray("%g"),QByteArray::number(packetValues[i].toDouble(),'g',precision));
@@ -82,4 +82,3 @@ v.replace(QByteArray("%n"),field.toAscii());
 v.replace(QByteArray("%s"),packetParts[i]);
 v.replace(QByteArray("%x"),packetParts[i].toHex());
 }}}
-
