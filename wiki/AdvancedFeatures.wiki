@@ -77,7 +77,7 @@ display = list
 display_sep = %09
 }}}
 
-
+Tip: TAB separated values can be easily Copy & Pasted into an Excel spreadsheet.
 
 ===Display data as HEX string=== 
 
