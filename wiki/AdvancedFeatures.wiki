@@ -70,6 +70,15 @@ display_sep = ,
 display_skip_transparent = 1
 }}}
 
+Please note that the separator can be specified in [http://en.wikipedia.org/wiki/Percent-encoding Percent Encoded] string for example for a TAB separated list use:
+
+{{{
+display = list
+display_sep = %09
+}}}
+
+
+
 ===Display data as HEX string=== 
 
 {{{
