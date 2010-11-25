@@ -115,9 +115,9 @@ format = %g / %f / %d / %n / %s / %x
 
 %n -> field name
 
-%f -> float, format as [-]9.9
+%f -> float, format as -9.9
 
-%g -> float, format as [-]9.9 or [-]9.9e[+|-]999 whichever is shorter
+%g -> float, format as -9.9 or -9.9e+9 whichever is shorter
 
 %d -> decimal integer
 
