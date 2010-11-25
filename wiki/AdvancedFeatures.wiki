@@ -93,13 +93,62 @@ display = hex
 type = byte / sbyte / word / sword / float
 }}}
 
+
+===Specify data Endianness===
+
+see http://en.wikipedia.org/wiki/Endianness
+
+{{{
+endian  = msbf / lsbf
+}}}
+
+
+msbf -> most significant byte first  
+lsbf -> least significant byte first
+
+
 ===Specify data format for custom display (ex: display = list) ===
 
 {{{
 format = %g / %f / %d / %n / %s / %x
 }}}
 
-Here is how this formatting is applied (providing source code excerpt until further documentation is written):
+%n -> field name
+
+%f -> float, format as [-]9.9
+
+%g -> float, format as [-]9.9 or [-]9.9e[+|-]999 whichever is shorter
+
+%d -> decimal integer
+
+%s -> raw data for this value
+
+%x -> hex of raw data
+
+You can combine formats as follows:
+
+{{{
+[MyField]
+type = float
+precision = 3
+format = %n = %f
+}}}
+
+will output for ex:
+
+... , MyField = 1.123 , ...
+
+
+
+
+===Set precision of floats in format===
+
+{{{
+precision = 6   
+}}}
+
+
+Here is how this formatting is applied (providing source code) :
 
 {{{
 v.replace(QByteArray("%g"),QByteArray::number(packetValues[i].toDouble(),'g',precision));
