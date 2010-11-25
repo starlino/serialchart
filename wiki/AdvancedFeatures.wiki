@@ -136,7 +136,7 @@ format = %n = %f
 
 will output for ex:
 
-... , MyField = 1.123 , ...
+... , MyField `=` 1.123 , ...
 
 
 
