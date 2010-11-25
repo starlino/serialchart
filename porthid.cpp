@@ -23,8 +23,8 @@ void PortHid::run(){
         while(isRunning){
             //read
             hidDevice->read(in_report_id,dataBytes);
-
-            processDataLine();
+            emit newData(dataBytes);
+            emit packetSeparator();
             qApp->processEvents();
         }
 
@@ -44,49 +44,6 @@ void PortHid::send(const QString & str){
 
 }
 
-void PortHid::processDataLine(){
-    dataValues.clear();
-
-
-    int j = 1; //start at byte 1 (byte 0 is Report ID)
-    for(int i=0; i < config->fields.length(); i++){
-        QString sectionName = config->fields[i];
-        QString type = config->get(sectionName,"type","byte").toLower();
-        int valueSize = 1;
-        if("byte" == type){
-            if(j+valueSize<=dataBytes.size())
-                dataValues.append((double)(unsigned char)(dataBytes[j]));
-        }else if("sbyte" == type){
-            if(j+valueSize<=dataBytes.size())
-                dataValues.append((double)(char)(dataBytes[j]));
-        }else if("word" == type){
-            valueSize = 2;
-            if(j+valueSize<=dataBytes.size())
-                dataValues.append(
-                        (double)(unsigned char)(dataBytes[j])+
-                        ((double)(unsigned char)(dataBytes[j+1]))*256
-                );
-        }else if("sword" == type){
-            valueSize = 2;
-            if(j+valueSize<=dataBytes.size())
-                dataValues.append(
-                       (double)(unsigned char)(dataBytes[j])+
-                       ((double)(char)(dataBytes[j+1]))*256
-                );
-        }
-        j += valueSize;
-    }
-
-    /*
-    dataStr = "";
-    for(int i=0;i< dataValues.size();i++){
-        if(i>0) dataStr += ",";
-        dataStr += QString::number(dataValues[i]);
-    }
-    */
-
-    emit newDataLine(dataValues);
-}
 
 void PortHid::requestToStop(){
     isRunning = false;

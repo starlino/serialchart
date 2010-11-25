@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     decoderbase.cpp \
     decodercsv.cpp \
     displaybase.cpp \
-    decoderhdlc.cpp
+    decoderhdlc.cpp \
+    decoderbin.cpp
 HEADERS += mainwindow.h \
     qextserialport/win_qextserialport.h \
     qextserialport/qextserialport.h \
@@ -33,7 +34,8 @@ HEADERS += mainwindow.h \
     decoderbase.h \
     decodercsv.h \
     displaybase.h \
-    decoderhdlc.h
+    decoderhdlc.h \
+    decoderbin.h
 FORMS += mainwindow.ui
 RESOURCES += resources.qrc
 OTHER_FILES += notes.txt

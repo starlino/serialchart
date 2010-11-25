@@ -23,14 +23,14 @@ private:
     bool isRunning;
     bool newLine;
     void portSetup();
-    void processDataLine();
 
 signals:
     void newData(const QByteArray&);
+    void packetSeparator();
     void stopped();
     void message(const QString& text,const QString& type);
 
-    void newDataLine(const QList<double>&);
+
 
 
 public slots:

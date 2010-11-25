@@ -17,6 +17,9 @@ DecoderBase* createDecoder(QObject *parent, Configuration* config){
 
     if(config->get("_setup_","decoder") == "hdlc")
         return new DecoderHdlc(parent,config);
+    if(config->get("_setup_","decoder") == "bin")
+        return new DecoderBin(parent,config);
+
     //default
         return new DecoderCsv(parent,config);
 };

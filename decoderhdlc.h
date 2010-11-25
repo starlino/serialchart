@@ -1,9 +1,9 @@
 #ifndef DECODERHDLC_H
 #define DECODERHDLC_H
 
-#include "decoderbase.h"
+#include "decoderbin.h"
 
-class DecoderHdlc : public DecoderBase
+class DecoderHdlc : public DecoderBin
 {
 Q_OBJECT
 public:
@@ -20,7 +20,6 @@ signals:
 
 public slots:
     void newData(const QByteArray&);
-    void packetSeparator();
 };
 
 #endif // DECODERHDLC_H

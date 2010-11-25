@@ -164,12 +164,14 @@ bool HidDevice::read(unsigned char reportID, QByteArray& readData){
     //Blocking function, unless an "overlapped" structure is used
     ReadFile(ReadHandle, (BYTE*)(readData.data()), readData.size() , &BytesRead, 0);
 
+    /*
     //following is used for debug
     QString str = "HID READ["+ QString::number(BytesRead)+"]:";
     for(unsigned int i=1;i<=readData.size()-1;i++){
         str += QString::number(readData[i])+",";
     }
     qDebug(str.toAscii());
+    */
 
     return true;
 }
