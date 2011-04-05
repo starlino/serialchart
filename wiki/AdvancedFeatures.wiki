@@ -36,7 +36,7 @@ _Tip: use an utility like USBDeview http://www.nirsoft.net/utils/usb_devices_vie
 ===Specify CSV decoding (default)===
 
 {{{
-decoder = bin
+decoder = csv
 }}}
 
 ===Specify binary decoding===
