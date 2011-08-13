@@ -160,7 +160,7 @@ v.replace(QByteArray("%x"),packetParts[i].toHex());
 }}}
 
 
-===Using h_origin and pitch field parameters ===
+===Using {{{h_origin}}} and {{{pitch}}} field parameters ===
 
 Example:
 {{{
@@ -169,10 +169,10 @@ h_origin = 50
 pitch = 10
 }}}
 
-Use h_origin to specify what horizontal line corresponds to field value of 0. So , in the example above 0 will charted 50 pixels below the top border of the chart.
+Use {{{h_origin}}} to specify what horizontal line corresponds to field value of 0. So , in the example above 0 will charted 50 pixels below the top border of the chart.
 
-Use pitch to specify how many units of field's value correspond to 1 pixel on the chart. So in the example above Field1 = 20 will be charted at 50 - 20 / 10 = 48 pixels below the top border of the chart.
+Use {{{pitch}}} to specify how many units of field's value correspond to 1 pixel on the chart. So in the example above Field1 = 20 will be charted at 50 - 20 / 10 = 48 pixels below the top border of the chart.
 
-Please note that h_origin and pitch, just like any other field parameter, can be specified in the [_default_] section to apply by default to all fields.
+Please note that {{{h_origin}}} and {{{pitch}}}, just like any other field parameter, can be specified in the {{{[_default_]}}} section to apply by default to all fields.
 
-If no h_origin or pitch is specified then it is calculated automatically based on field's min / max parameters, so that a value of max is always charted in the top-most line of the chart , and min is charted on the bottom line on the chart.
+If no {{{h_origin}}} or {{{pitch}}} is specified then it is calculated automatically based on field's min / max parameters, so that a value of max is always charted on the top-most line of the chart , and min value is charted on the bottom line on the chart. 
