@@ -169,7 +169,7 @@ h_origin = 50
 pitch = 10
 }}}
 
-Use {{{h_origin}}} to specify what horizontal line corresponds to field value of 0. So , in the example above 0 will charted 50 pixels below the top border of the chart.
+Use {{{h_origin}}} to specify what horizontal line corresponds to the field value of 0. So , in the example above 0 will be charted 50 pixels below the top border of the chart.
 
 Use {{{pitch}}} to specify how many units of field's value correspond to 1 pixel on the chart. So in the example above Field1 = 20 will be charted at 50 - 20 / 10 = 48 pixels below the top border of the chart.
 
