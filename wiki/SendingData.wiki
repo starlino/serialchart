@@ -1,6 +1,6 @@
 = Sending Data =
 
-_As of version 0.3.1 it is possible to send data to COM ports. This can be done either by using the send box or automatically from configuration file (on run or stop)._
+_As of version 0.3.2 it is possible to send data to COM ports. This can be done either by using the send box or automatically from configuration file (on run or stop)._
 
 The sent strings supports following escaped characters:
 
