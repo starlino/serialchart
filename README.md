@@ -1,6 +1,9 @@
-SerialChart is an open source application for charting data sent via serial (RS-232) port in real time. It supports other type of ports via plugins and WebView javascript integration. The new modular design allows you to add new type of ports, decoders, and display filters.
+SerialChart is an open source application developed by Sergiu Baluta. SerialChart is used for real-time charting of data sent via serial (RS-232) port. It supports other types of ports via plugins and WebView javascript integration. The modular design allows the motivtated coder to add new type of ports, decoders, and display filters. The basic data processing workflow is:
 
 PORT (RAW DATA FROM SERIAL/USB PORT) -> DECODER(PROCESSES DATA) -> VALUES(displayed on screen/chart)
+
+For basic users, a compiled read-to-use version can be **downloaded** at the official Serial Chart webpage:
+**![http://starlino.com/serialchart](http://starlino.com/serialchart)**
 
 For sample usage with a micro-controller (Arduino) project see: http://starlino.com/imu_kalman_arduino.html
 
