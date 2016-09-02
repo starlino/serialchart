@@ -1,6 +1,8 @@
-SerialChart is an open source application for charting data sent via serial (RS-232) port in real time. It supports other type of ports via plugins and WebView javascript integration.
+SerialChart is an open source application for charting data sent via serial (RS-232) port in real time. It supports other type of ports via plugins and WebView javascript integration. The new modular design allows you to add new type of ports, decoders, and display filters.
 
-For sample usage with a microcontroller (Arduino) project see: http://starlino.com/imu_kalman_arduino.html
+PORT (RAW DATA FROM SERIAL/USB PORT) -> DECODER(PROCESSES DATA) -> VALUES(displayed on screen/chart)
+
+For sample usage with a micro-controller (Arduino) project see: http://starlino.com/imu_kalman_arduino.html
 
 ![http://starlino.com/data/imu_kalman_arduino/imu_arduino_serial_chart.png](http://starlino.com/data/imu_kalman_arduino/imu_arduino_serial_chart.png)
 
@@ -75,6 +77,71 @@ Draw a grid line at each step of pixels from the origin line.
 Color of regular grid lines.
 
 
+### _decoder_ ###
+
+#### Specify CSV decoding (default) ####
+
+```
+decoder = csv
+```
+
+#### Specify binary decoding ####
+
+```
+decoder = bin
+```
+
+#### Specify HDLC-style decoding ####
+
+```
+decoder =hdlc
+hdlc_esc =7d
+hdlc_sep =7e
+hdlc_xor =20
+```
+
+### _display_ ###
+
+#### Display **raw** data coming from port (default) ####
+
+```
+display = raw
+```
+
+#### Display data as a **list** of values ####
+
+```
+display = list
+display_sep = ,
+display_skip_transparent = 1
+```
+
+Please note that the separator can be specified in [Percent Encoded](http://en.wikipedia.org/wiki/Percent-encoding) string for example for a TAB separated list use:
+
+```
+display = list
+display_sep = %09
+```
+
+Tip: TAB separated values can be easily Copy & Pasted into an Excel spreadsheet. (In Excel use Paste > Paste Special and select Text as format).
+
+#### Display data as HEX string ####
+
+```
+display = hex
+```
+
+## Open a USB HID device (keyboard/mouse/gamepad) ##
+
+```
+port = HID   
+vid = 0079
+pid = 5d0f
+```
+
+_Tip: use an utility like USBDeview http://www.nirsoft.net/utils/usb_devices_view.html to find the vendor and product IDs of a specific device (VID/PID)._
+
+
 # Default and Field Sections #
 
 SerialChart accepts packets in CSV format (other formats might be supported in the future). Each packet comes on a separate line and each field value is separated by comma. Here is an example of sample data that SerialChart would receive:
@@ -123,94 +190,6 @@ Creates an interrupted line. For example:
 dash = 3
 will render 3 samples then will not render the next 3 samples, then render 3 samples, then again pause for 3 samples and so on...
 
-# Advanced Serial Chart Features #
-
-_Please note that these features are experimental and might not be available in the download compiled version, please get Qt SDK and compile/run the source code from SVN repository. The new modular design allows you to add new type of ports, decoders, and display filters._
-
-Basic data chain in the new framework is as follows:
-
-PORT (RAW DATA FROM SERIAL/USB PORT) -> DECODER(PROCESSES DATA) -> VALUES(displayed on screen/chart)
-
-# `[_setup_] section ` #
-
-
-## _port_ ##
-
-### Open a usb COM port ###
-
-```
-port = COM1
-```
-
-see  ConfigurationFileSyntax  for related options
-
-
-### Open a USB HID device (keyboard/mouse/gamepad) ###
-
-```
-port = HID   
-vid = 0079
-pid = 5d0f
-```
-
-_Tip: use an utility like USBDeview http://www.nirsoft.net/utils/usb_devices_view.html to find the vendor and product IDs of a specific device (VID/PID)._
-
-
-## _decoder_ ##
-
-### Specify CSV decoding (default) ###
-
-```
-decoder = csv
-```
-
-### Specify binary decoding ###
-
-```
-decoder = bin
-```
-
-### Specify HDLC-style decoding ###
-
-```
-decoder =hdlc
-hdlc_esc =7d
-hdlc_sep =7e
-hdlc_xor =20
-```
-
-## _display_ ##
-
-### Display **raw** data coming from port (default) ###
-
-```
-display = raw
-```
-
-### Display data as a **list** of values ###
-
-```
-display = list
-display_sep = ,
-display_skip_transparent = 1
-```
-
-Please note that the separator can be specified in [Percent Encoded](http://en.wikipedia.org/wiki/Percent-encoding) string for example for a TAB separated list use:
-
-```
-display = list
-display_sep = %09
-```
-
-Tip: TAB separated values can be easily Copy & Pasted into an Excel spreadsheet. (In Excel use Paste > Paste Special and select Text as format).
-
-### Display data as HEX string ###
-
-```
-display = hex
-```
-
-# `[any field] sections` #
 
 ### Specify data length/type for BIN/HDLC decodings ###
 
@@ -262,8 +241,6 @@ format = %n = %f
 will output for ex:
 
 ... , MyField `=` 1.123 , ...
-
-
 
 
 ### Set precision of floats in format ###
