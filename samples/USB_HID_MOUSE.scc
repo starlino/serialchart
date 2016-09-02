@@ -1,0 +1,39 @@
+[_setup_]
+port = HID   
+vid = 1bcf
+pid = 0808
+
+decoder = bin
+
+display = list
+display_sep = %09
+display_skip_transparent = 1
+
+
+width=1000
+height=512
+background_color = white
+
+grid_h_origin = 256
+grid_h_step = 16
+grid_h_color = #EEE
+grid_h_origin_color = #CCC
+
+grid_v_origin = 0
+grid_v_step = 20
+grid_v_color = #EEE
+grid_v_origin_color = transparent
+
+[_default_]
+min = 0
+max = 255
+
+[buttons]
+color=red
+
+[dx]
+color=blue
+
+
+[dy]
+color=green
