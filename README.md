@@ -3,7 +3,7 @@ SerialChart is an open source application developed by Sergiu Baluta. SerialChar
 PORT (RAW DATA FROM SERIAL/USB PORT) -> DECODER(PROCESSES DATA) -> VALUES(displayed on screen/chart)
 
 For basic users, a compiled read-to-use version can be **downloaded** at the official Serial Chart webpage:
-**![http://starlino.com/serialchart](http://starlino.com/serialchart)**
+http://starlino.com/serialchart
 
 For sample usage with a micro-controller (Arduino) project see: http://starlino.com/imu_kalman_arduino.html
 
