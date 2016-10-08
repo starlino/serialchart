@@ -4,7 +4,7 @@
 #include "plugin.h"
 #include "QWebFrame"
 
-#define APP_VERSION "0.3.3"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     config = new Configuration(this);
     portValid = false;
 
-
+    setWindowTitle(APP_NAME " " APP_VERSION);
     loadDocument(settings.value("Last Configuration").toString());
     restoreGeometry(settings.value("WINDOW_GEOMETRY").toByteArray());
     restoreState(settings.value("DOCK_LOCATIONS").toByteArray());
@@ -179,9 +179,7 @@ bool MainWindow::loadDocument(const QString& filePath)
 void MainWindow::updateDocumentFilePath(const QString& filePath){
     documentFilePath = filePath;
     settings.setValue("Last Configuration",filePath);
-    this->setWindowTitle("SerialChart " \
-        APP_VERSION \
-        " - " + QFileInfo(filePath).fileName() );
+    this->setWindowTitle(APP_NAME " " APP_VERSION " - " + QFileInfo(filePath).fileName() );
     documentIsDirty  = false;
 };
 
